@@ -1,0 +1,33 @@
+sudo: required
+
+language: scala
+scala: 2.11.8
+jdk: oraclejdk8
+
+services:
+  - docker
+
+cache:
+  directories:
+    - "$HOME/.ivy2/cache"
+    - "$HOME/.sbt/boot/"
+
+before_cache:
+  # Tricks to avoid unnecessary cache updates
+  - find $HOME/.ivy2 -name "ivydata-*.properties" -delete
+  - find $HOME/.sbt -name "*.lock" -delete
+
+before_script:
+  - curl -L https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb > vagrant.deb
+  - sudo dpkg --force-confnew -i vagrant.deb
+  - vagrant up --provider=docker
+
+after_script:
+  - sbt coverage test
+  - sbt coverageReport
+  - sbt coverageAggregate
+  - sbt codacyCoverage
+
+notifications:
+  webhooks:
+    secure: "JcNU51t1NsqySzUniGZgLw/YYwgOP4gzs65AxACcSt4aSS6aa26DME5Z9ih2y2U/Bu9WTdAzGXgWqksinymyTTXNCLb8bhsf93JnTVmTLrRQEdyH96sanuzamJ6XJs3+Gz1JSntIQ1v64ab6pSNOb3ql4Au/iGo5HfIqIgehmTC2ZeK9SGfjoaThfUtV8fxI0zRBbpjKfMeXpdfY1U+a0v1RvxP5/XK89/qevRMUe23nKe/s8L/oHVWNZItwZKl39Y924GkXh8uct3G4LC/030Xi+cz/6KObIkvStsjKaWCyENOGWKRe0lHiEjPsQVf80+EcyaHMzxRL5LgyI8LU4dmImlix3+0wffHfCKxCRv+KG/4u7Zqrf2ZZ5jcR96m6tx126w4UJCp0O5Zo0LsmqrZkfeAbLHTyHKBh2cgaZl+FATjLIenViAeFFSw+jMFxwb3LCV7YBpdiPi37hNrjt8a3izuFjD+1WF+TXLpKtqnJbFf6vdyzB1Xw3PNleaTUypOouxNs49uSsyglUlazpkrJOr2eT3QAr1L4gDWxMk1kytifIvadmdl2siEDaMINiJTujs6ePHSc7Wevdysj3iwBebL+xr/UMIkFRfgVr50Kc987jNZOrKvlGylCm0QEmbMwel78fgsTk3yGjF4CCQLwGrqgBSIlPK7+bx4uC/o="
