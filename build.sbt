@@ -39,16 +39,14 @@ libraryDependencies ++= Seq(
   //Ldap
   "pt.tecnico.dsi" %% "ldap" % "0.0.1",
   //Logging
-  "com.typesafe.akka" %% "akka-slf4j" % akkaVersion % "test",
-  "ch.qos.logback" % "logback-classic" % "1.1.7" % "test",
+  "com.typesafe.akka" %% "akka-slf4j" % akkaVersion % Test,
+  "ch.qos.logback" % "logback-classic" % "1.1.7" % Test,
   //Testing
-  "org.scalatest" %% "scalatest" % "2.2.6" % "test",
-  "com.typesafe.akka" %% "akka-testkit" % akkaVersion % "test",
+  "org.scalatest" %% "scalatest" % "2.2.6" % Test,
+  "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test,
   //Configuration
   "com.typesafe" % "config" % "1.3.0"
 )
-
-resolvers += Resolver.mavenLocal
 
 //This is needed for LevelDB to work in tests
 fork in Test := true
@@ -79,6 +77,11 @@ pomExtra :=
       <id>magicknot</id>
       <name>David Duarte</name>
       <url>https://github.com/magicknot</url>
+    </developer>
+    <developer>
+      <id>Lasering</id>
+      <name>Simão Martins</name>
+      <url>https://github.com/Lasering</url>
     </developer>
   </developers>
 
