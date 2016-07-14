@@ -27,10 +27,10 @@ object Ldap {
     def deliveryId: DeliveryId
   }
   
-  sealed trait SuccessResponse extends Response
+  trait SuccessResponse extends Response
   case class Successful(deliveryId: DeliveryId) extends SuccessResponse
   case class SearchResponse(entries: Seq[Entry], deliveryId: DeliveryId) extends SuccessResponse
   
-  sealed trait FailureResponse extends Response
+  trait FailureResponse extends Response
   case class Failed(exception: Exception, deliveryId: DeliveryId) extends FailureResponse
 }
