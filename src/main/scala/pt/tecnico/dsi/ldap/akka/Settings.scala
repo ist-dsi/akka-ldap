@@ -43,7 +43,7 @@ class Settings(config: Config = ConfigFactory.load()) {
   val saveSnapshotRoughlyEveryXMessages = getInt("save-snapshot-roughly-every-X-messages")
 
   val ldapSettings: LdapSettings = {
-    val path = "kadmin"
+    val path = "ldap"
     if (akkaLdapConfig.hasPath(path)) {
       val c = if (config.hasPath(path)) {
         akkaLdapConfig.getConfig(path).withFallback(config.getConfig(path))
