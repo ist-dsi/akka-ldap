@@ -4,8 +4,8 @@ import pt.tecnico.dsi.ldap.Entry
 
 object Ldap {
   type DeliveryId = Long
-  type TextAttributes = Map[String, Seq[String]]
-  type BinaryAttributes = Map[String, Seq[Array[Byte]]]
+  type TextAttributes = Map[String, List[String]]
+  type BinaryAttributes = Map[String, List[Array[Byte]]]
   
   sealed trait Request {
     def deliveryId: DeliveryId

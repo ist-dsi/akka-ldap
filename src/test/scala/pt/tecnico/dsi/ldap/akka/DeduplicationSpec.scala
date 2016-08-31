@@ -10,16 +10,16 @@ class DeduplicationSpec extends ActorSystemSpec {
       "messages are sent in a ping-pong manner" in {
 
         val addEntryId = nextSeq()
-        ldapActor ! AddEntry(cn, Map("cn" -> Seq("John Doe"), "sn" -> Seq("Doe"), "telephoneNumber" -> Seq("210000000"),
-          "objectclass" -> Seq("person")), deliveryId = addEntryId)
+        ldapActor ! AddEntry(cn, Map("cn" -> List("John Doe"), "sn" -> List("Doe"), "telephoneNumber" -> List("210000000"),
+          "objectclass" -> List("person")), deliveryId = addEntryId)
         expectMsg(Successful(addEntryId))
 
         val replaceAttributeId = nextSeq()
-        ldapActor ! ReplaceAttributes(cn, Map("sn" -> Seq("Doete")), deliveryId = replaceAttributeId)
+        ldapActor ! ReplaceAttributes(cn, Map("sn" -> List("Doete")), deliveryId = replaceAttributeId)
         expectMsg(Successful(replaceAttributeId))
 
         val removeAttributeId = nextSeq()
-        ldapActor ! RemoveAttributes(cn, Seq("telephoneNumber"), deliveryId = removeAttributeId)
+        ldapActor ! RemoveAttributes(cn, List("telephoneNumber"), deliveryId = removeAttributeId)
         expectMsg(Successful(removeAttributeId))
 
         val deleteEntryId = nextSeq()
@@ -29,12 +29,12 @@ class DeduplicationSpec extends ActorSystemSpec {
       }
       "messages are sent in rapid succession" in {
         val addEntryId = nextSeq()
-        ldapActor ! AddEntry(cn, Map("cn" -> Seq("John Doe"), "sn" -> Seq("Doe"), "telephoneNumber" -> Seq("210000000"),
-          "objectclass" -> Seq("person")), deliveryId = addEntryId)
+        ldapActor ! AddEntry(cn, Map("cn" -> List("John Doe"), "sn" -> List("Doe"), "telephoneNumber" -> List("210000000"),
+          "objectclass" -> List("person")), deliveryId = addEntryId)
         val replaceAttributeId = nextSeq()
-        ldapActor ! ReplaceAttributes(cn, Map("sn" -> Seq("Doete")), deliveryId = replaceAttributeId)
+        ldapActor ! ReplaceAttributes(cn, Map("sn" -> List("Doete")), deliveryId = replaceAttributeId)
         val removeAttributeId = nextSeq()
-        ldapActor ! RemoveAttributes(cn, Seq("telephoneNumber"), removeAttributeId)
+        ldapActor ! RemoveAttributes(cn, List("telephoneNumber"), removeAttributeId)
         val deleteEntryId = nextSeq()
         ldapActor ! DeleteEntry(cn, deleteEntryId)
         ldapActor ! DeleteEntry(cn, deleteEntryId)
