@@ -15,7 +15,7 @@
 ## Install
 Add the following dependency to your `build.sbt`:
 ```sbt
-libraryDependencies += "pt.tecnico.dsi" %% "akka-ldap" % "0.3.0"
+libraryDependencies += "pt.tecnico.dsi" %% "akka-ldap" % "0.4.0"
 ```
 We use [semantic versioning](http://semver.org).
 
