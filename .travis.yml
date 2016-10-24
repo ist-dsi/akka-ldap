@@ -18,7 +18,7 @@ before_cache:
   - find $HOME/.sbt -name "*.lock" -delete
 
 before_script:
-  - curl -L https://releases.hashicorp.com/vagrant/1.8.5/vagrant_1.8.5_x86_64.deb > vagrant.deb
+  - curl -L https://releases.hashicorp.com/vagrant/1.8.6/vagrant_1.8.6_x86_64.deb > vagrant.deb
   - sudo dpkg --force-confnew -i vagrant.deb
   - vagrant up --provider=docker
 
