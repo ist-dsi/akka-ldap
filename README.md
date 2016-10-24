@@ -1,5 +1,5 @@
 # Akka LDAP
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/pt.tecnico.dsi/akka-ldap_2.12.0-RC1/badge.svg?maxAge=604800)](https://maven-badges.herokuapp.com/maven-central/pt.tecnico.dsi/akka-ldap_2.12.0-RC1)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/pt.tecnico.dsi/akka-ldap_2.12.0-RC2/badge.svg?maxAge=604800)](https://maven-badges.herokuapp.com/maven-central/pt.tecnico.dsi/akka-ldap_2.12.0-RC2)
 [![Dependency Status](https://www.versioneye.com/java/pt.tecnico.dsi:akka-ldap_2.12.0-RC1/badge.svg?style=plastic&maxAge=604800)](https://www.versioneye.com/java/pt.tecnico.dsi:akka-ldap_2.12.0-RC1)
 [![Reference Status](https://www.versioneye.com/java/pt.tecnico.dsi:akka-ldap_2.12.0-RC1/reference_badge.svg?style=plastic&maxAge=604800)](https://www.versioneye.com/java/pt.tecnico.dsi:akka-ldap_2.12.0-RC1/references)
 [![Build Status](https://travis-ci.org/ist-dsi/akka-ldap.svg?branch=master&style=plastic&maxAge=604800)](https://travis-ci.org/ist-dsi/akka-ldap)
@@ -17,6 +17,9 @@ Add the following dependency to your `build.sbt`:
 ```sbt
 libraryDependencies += "pt.tecnico.dsi" %% "akka-ldap" % "0.4.1"
 ```
+
+`akka-ldap` is available for Scala **2.11**, **2.12.0-RC1** and **2.12.0-RC2**.
+
 We use [semantic versioning](http://semver.org).
 
 ## Usage
