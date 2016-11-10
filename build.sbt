@@ -2,8 +2,6 @@ organization := "pt.tecnico.dsi"
 name := "akka-ldap"
 
 javacOptions ++= Seq(
-  "-source", javaVersion,
-  "-target", javaVersion,
   "-Xlint",
   "-encoding", "UTF-8",
   "-Dfile.encoding=utf-8"
