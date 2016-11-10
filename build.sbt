@@ -30,7 +30,7 @@ libraryDependencies ++= Seq(
   "org.iq80.leveldb"            % "leveldb"          % "0.9",
   "org.fusesource.leveldbjni"   % "leveldbjni-all"   % "1.8",
   //Ldap
-  "pt.tecnico.dsi" %% "ldap" % "0.4.0",
+  "pt.tecnico.dsi" %% "ldap" % "0.4.1",
   //Logging
   "com.typesafe.akka" %% "akka-slf4j" % akkaVersion % Test,
   "ch.qos.logback" % "logback-classic" % "1.1.7" % Test,
