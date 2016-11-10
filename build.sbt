@@ -84,12 +84,14 @@ releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
   inquireVersions,
   runClean,
-  ReleaseStep(action = Command.process("doc", _)),
+  releaseStepCommand("doc"),
+  runTest,
   setReleaseVersion,
   tagRelease,
-  ReleaseStep(action = Command.process("ghpagesPushSite", _)),
-  ReleaseStep(action = Command.process("publishSigned", _)),
-  ReleaseStep(action = Command.process("sonatypeRelease", _)),
-  pushChanges,
-  setNextVersion
+  releaseStepCommand("ghpagesPushSite"),
+  releaseStepCommand("publishSigned"),
+  releaseStepCommand("sonatypeRelease"),
+  setNextVersion,
+  commitNextVersion,
+  pushChanges
 )
