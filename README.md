@@ -15,7 +15,7 @@
 ## Install
 Add the following dependency to your `build.sbt`:
 ```sbt
-libraryDependencies += "pt.tecnico.dsi" %% "akka-ldap" % "0.4.1"
+libraryDependencies += "pt.tecnico.dsi" %% "akka-ldap" % "0.4.2"
 ```
 
 `akka-ldap` is available for Scala **2.12.0**.
