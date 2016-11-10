@@ -14,7 +14,7 @@ javacOptions ++= Seq(
   "-Dfile.encoding=utf-8"
 )
 
-scalaVersion := "2.12.0-RC2"
+scalaVersion := "2.12.0"
 scalacOptions ++= Seq(
   "-target:jvm-1.8",
   "-deprecation",                   //Emit warning and location for usages of deprecated APIs.
@@ -29,7 +29,7 @@ scalacOptions ++= Seq(
   "-Ywarn-dead-code"                //Warn when dead code is identified.
 )
 
-val akkaVersion = "2.4.11"
+val akkaVersion = "2.4.12"
 libraryDependencies ++= Seq(
   // Akka
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
