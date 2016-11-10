@@ -1,11 +1,6 @@
 organization := "pt.tecnico.dsi"
 name := "akka-ldap"
 
-val javaVersion = "1.8"
-initialize := {
-  val current  = sys.props("java.specification.version")
-  assert(current == javaVersion, s"Unsupported JDK: expected JDK $javaVersion installed, but instead got JDK $current.")
-}
 javacOptions ++= Seq(
   "-source", javaVersion,
   "-target", javaVersion,
