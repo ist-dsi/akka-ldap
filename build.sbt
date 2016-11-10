@@ -1,20 +1,13 @@
 organization := "pt.tecnico.dsi"
 name := "akka-ldap"
 
-val javaVersion = "1.8"
-initialize := {
-  val current  = sys.props("java.specification.version")
-  assert(current == javaVersion, s"Unsupported JDK: expected JDK $javaVersion installed, but instead got JDK $current.")
-}
 javacOptions ++= Seq(
-  "-source", javaVersion,
-  "-target", javaVersion,
   "-Xlint",
   "-encoding", "UTF-8",
   "-Dfile.encoding=utf-8"
 )
 
-scalaVersion := "2.12.0-RC1"
+scalaVersion := "2.12.0"
 scalacOptions ++= Seq(
   "-target:jvm-1.8",
   "-deprecation",                   //Emit warning and location for usages of deprecated APIs.
@@ -29,7 +22,7 @@ scalacOptions ++= Seq(
   "-Ywarn-dead-code"                //Warn when dead code is identified.
 )
 
-val akkaVersion = "2.4.10"
+val akkaVersion = "2.4.12"
 libraryDependencies ++= Seq(
   // Akka
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
@@ -37,7 +30,7 @@ libraryDependencies ++= Seq(
   "org.iq80.leveldb"            % "leveldb"          % "0.9",
   "org.fusesource.leveldbjni"   % "leveldbjni-all"   % "1.8",
   //Ldap
-  "pt.tecnico.dsi" %% "ldap" % "0.4.0",
+  "pt.tecnico.dsi" %% "ldap" % "0.4.1",
   //Logging
   "com.typesafe.akka" %% "akka-slf4j" % akkaVersion % Test,
   "ch.qos.logback" % "logback-classic" % "1.1.7" % Test,
