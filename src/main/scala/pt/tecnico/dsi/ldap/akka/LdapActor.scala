@@ -163,7 +163,8 @@ class LdapActor(val settings: Settings = new Settings()) extends Actor with Pers
   }
 
   def receiveRecover: Receive = LoggingReceive {
-    case SnapshotOffer(metadata, offeredSnapshot) =>
+
+    case SnapshotOffer(_, offeredSnapshot) =>
       resultsPerSender = offeredSnapshot.asInstanceOf[Map[ActorPath, SortedMap[Long, Option[Response]]]]
     case SideEffectResult(recipient, response) =>
       updateResult(recipient.path, response.deliveryId, Some(response))

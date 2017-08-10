@@ -49,7 +49,6 @@ class DeduplicationSpec extends ActorSystemSpec {
     "not be executed" when {
       "a future message is sent" in {
         nextSeq() //Skip one message
-        val id = nextSeq()
         ldapActor ! Search(cn, "uid=john", deliveryId = nextSeq())
         expectNoMsg()
       }
