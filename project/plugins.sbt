@@ -1,16 +1,14 @@
 logLevel := Level.Warn
 
-addSbtPlugin("com.thoughtworks.sbt-api-mappings" % "sbt-api-mappings" % "0.2.1")
+addSbtPlugin("com.typesafe.sbt" % "sbt-ghpages" % "0.6.2")
 
-addSbtPlugin("com.typesafe.sbt" % "sbt-ghpages" % "0.5.4")
-resolvers += "jgit-repo" at "http://download.eclipse.org/jgit/maven"
+addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.1.0-M1")
+addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.0")
+addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.6")
 
-addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.0.0")
-addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "1.1")
-addSbtPlugin("com.github.gseitz" % "sbt-release" % "1.0.3")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.1")
 
-resolvers += "Typesafe Repository" at "https://repo.typesafe.com/typesafe/releases/"
-addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.0")
-addSbtPlugin("com.codacy" % "sbt-codacy-coverage" % "1.3.6")
-
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.2.0")
+// Needed for scoverage snapshot
+resolvers += Opts.resolver.sonatypeSnapshots
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.1-SNAPSHOT")
+//addSbtPlugin("com.codacy" % "sbt-codacy-coverage" % "1.3.8")

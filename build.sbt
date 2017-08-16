@@ -58,6 +58,9 @@ scalacOptions ++= Seq(
   "-Ywarn-value-discard"               // Warn when non-Unit expression results are unused.
 )
 
+//This is needed for LevelDB to work in tests
+fork in Test := true
+
 // ======================================================================================================================
 // ==== Dependencies ====================================================================================================
 // ======================================================================================================================
@@ -82,10 +85,8 @@ libraryDependencies ++= Seq(
   "com.typesafe" % "config" % "1.3.1"
 )
 
-//This is needed for LevelDB to work in tests
-fork in Test := true
-
-shellPrompt := { s => Project.extract(s).currentProject.id + " > " }
+// Needed for scoverage snapshot
+resolvers += Opts.resolver.sonatypeSnapshots
 
 // ======================================================================================================================
 // ==== Scaladoc ========================================================================================================
@@ -94,9 +95,9 @@ shellPrompt := { s => Project.extract(s).currentProject.id + " > " }
 autoAPIMappings := true
 scalacOptions in(Compile, doc) ++= Seq("-groups", "-implicits", "-diagrams")
 
-site.settings
-site.includeScaladoc()
-ghpages.settings
+//site.settings
+//site.includeScaladoc()
+//ghpages.settings
 git.remoteRepo := s"git@github.com:ist-dsi/${name.value}.git"
 
 licenses += "MIT" -> url("http://opensource.org/licenses/MIT")
