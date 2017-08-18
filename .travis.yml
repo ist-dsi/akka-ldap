@@ -1,7 +1,7 @@
 sudo: required
 
 language: scala
-scala: 2.12.0
+scala: 2.12.3
 jdk: oraclejdk8
 
 services:
@@ -9,24 +9,24 @@ services:
 
 cache:
   directories:
-    - "$HOME/.ivy2/cache"
-    - "$HOME/.sbt/boot/"
+  - $HOME/.sbt/0.13/dependency
+  - $HOME/.sbt/boot/scala*
+  - $HOME/.sbt/launchers
+  - $HOME/.ivy2/cache
 
 before_cache:
-  # Tricks to avoid unnecessary cache updates
-  - find $HOME/.ivy2 -name "ivydata-*.properties" -delete
-  - find $HOME/.sbt -name "*.lock" -delete
+  - find $HOME/.sbt -name "*.lock" -type f -delete
+  - find $HOME/.ivy2/cache -name "ivydata-*.properties" -type f -delete
 
-before_script:
-  - curl -L https://releases.hashicorp.com/vagrant/1.8.6/vagrant_1.8.6_x86_64.deb > vagrant.deb
-  - sudo dpkg --force-confnew -i vagrant.deb
-  - vagrant up --provider=docker
+before_install:
+  - docker pull osixia/openldap:1.1.9
+  - docker run --name ldap -p 127.0.0.1:8389:389 -p 127.0.0.1:8636:636 --detach osixia/openldap:1.1.9
 
 after_script:
   - sbt coverage test
   - sbt coverageReport
   - sbt coverageAggregate
-  - sbt codacyCoverage
+#  - sbt codacyCoverage
 
 notifications:
   webhooks:
